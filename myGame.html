@@ -2,46 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="myGame.css">
 
     <title>Title</title>
 </head>
-<style>
-    #myProgress {
-        height:240px;
-        background-color: grey;
-    }
-    #myBar {
-        width: 60px;
-        height: 1%;
-        background-color: green;
-    }
-</style>
+
 <body>
 <h1>JavaScript Progress Bar</h1>
 
 <div id="myProgress">
     <div id="myBar"></div>
+
 </div>
 
 <br>
-<button onclick="move()">Click Me</button>
+<button onclick="move()">Down</button>
+<br>
+<button onclick="back()">UP</button>
 
 <script>
-    function move() {
-        var elementBar = document.getElementById("myBar");
-        var height = 1;
-        var id = setInterval(frame);
+    var bar = document.getElementById("myBar");
 
-        function frame() {
+    var height= 50;
+
+    //bar.style.height jak ma szczytywać z aktualnego położenia
+    //bar.style.height = height + '%'; ???
+
+    //setInterval(move,1000);
+
+    function move() {
+       var id = setInterval(line,100);
+        function line() {
             if (height >= 100) {
                 clearInterval(id);
             } else {
                 height++;
-                elementBar.style.height = height + '%';
+                bar.style.height = height + '%';
             }
         }
     }
+
+
+
+
+
+
+        function back() {
+            var id = setInterval(line, 100);
+
+            function line() {
+                if (height <= 1) {
+                    clearInterval(id);
+                } else {
+                    height--;
+                    bar.style.height = height + '%';
+
+                }
+            }
+        }
+
 </script>
 </body>
 </html>
+
+<!--po klik ma odjąć jeden i wyjść klik - jeden height
