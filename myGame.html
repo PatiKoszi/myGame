@@ -21,6 +21,7 @@
 <br>
 <button onclick="back()">UP</button>
 <div id="counter">0</div>
+<div id="time">0</div>
 
 
 <script>
@@ -36,11 +37,12 @@ progress.addEventListener('click', back);
     //setInterval(move,1000);
 //klikniecie na kolumne zmniejsza % tla
 
-    //var speedy = setInterval(function(move) {
+    //var speedy = setInterval(function() {
     //}, 100)
 // 500 dac jako zmienna i co 5 sekund zmiwkszac go o 50
-    function move() {
-       var id = setInterval(line,100);
+
+    /*function move() {
+       var id = setInterval(line,500);
         function line() {
             var height = parseInt(bar.style.height) //zmienia na liczbe
             console.log(height)
@@ -50,12 +52,42 @@ progress.addEventListener('click', back);
                 bar.style.height = (height + 3) + '%'
             }
         }
+    } */
+
+    function line() {
+        var height = parseInt(bar.style.height) //zmienia na liczbe
+        console.log(height)
+        if (height >= 100 || height < 1) {
+            clearInterval(id);
+        } else {
+            bar.style.height = (height + 3) + '%'
+        }
     }
 
-    var z =0;
+    var move  = (function () {
+        var delay = 500;
+        function run() {
+            var height = parseInt(bar.style.height) //zmienia na liczbe
+            console.log(height)
+            if (height >= 100 || height < 1) {
+                return
+            } else {
+                bar.style.height = (height + 3) + '%'
+            }
+            delay += 100
+            setTimeout(run, delay)
+        }
 
+        return run
+    })()
+
+
+
+// licznik sekund
+    var seconds =0;
     var time = setInterval(function(){
-        z++;
+        seconds++;
+        document.querySelector('#time').innerHTML= seconds;
     },1000);
 
 
@@ -63,7 +95,7 @@ progress.addEventListener('click', back);
 /*
     Kontrolowany interval :
 
-        var go = (function () {
+        var go = (function () {/
             var delay = 500;
             function run() {
                 console.log('foo');
@@ -81,7 +113,10 @@ progress.addEventListener('click', back);
             countOFclick ++;
            // document.querySelector('#counter').innerHTML= (countOFclick/z).toString();
            document.querySelector('#counter').innerHTML= countOFclick;
-            console.log(countOFclick);
+
+
+
+           console.log(countOFclick);
         }
 
 </script>
