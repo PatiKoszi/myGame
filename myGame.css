@@ -1,12 +1,30 @@
-#myProgress {
-    height:360px;
-    width: 240px;
+#container {
+    height:620px;
+    width: 600px;
     background-color: grey;
     display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
     align-items: flex-end;
+    justify-content: space-around;
 
 }
-#myBar {
-    width: 60px;
-    background-color: green;
+#myBar, #myBar1, #myBar2, #myBar3 {
+    width: 120px;
+    background-color: deeppink;
+}
+
+.buttonsBegin{
+    width:600px;
+    display:flex;
+    justify-content: space-around;
+}
+
+.button{
+    width:120px;
+    height:25px;
+}
+
+.space {
+    height: 15px;
 }

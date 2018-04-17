@@ -10,24 +10,41 @@
 <body>
 <h1>JavaScript Progress Bar</h1>
 
-<div id="myProgress">
+<div id="container">
     <div id="myBar"></div>
+    <div id="myBar1"></div>
+    <div id="myBar2"></div>
+    <div id="myBar3"></div>
+</div>
+<div class="space"></div>
+<div class ="buttonsBegin">
+<button class="button" onclick="move()">Start :)</button>
+<!-- <button class="button" onclick="move()">Begin :)</button>
+<button class="button" onclick="move()">Begin :)</button>
+<button class="button" onclick="move()">Begin :)</button> -->
 </div>
 
-<br>
-<button onclick="move()">Begin :)</button>
-<br>
-<button onclick="back()">UP</button>
+<button onclick="back()">Down</button>
 <div id="counter">0</div>
 <div id="time">0</div>
 
 
 <script>
+    var progress = document.getElementById("container");
     var bar = document.getElementById("myBar");
-    var progress = document.getElementById("myProgress")
+    var bar1 = document.getElementById("myBar1");
+    var bar2 = document.getElementById("myBar2");
+    var bar3 = document.getElementById("myBar3");
+
+
+
+
     var countOFclick = 0;
-progress.addEventListener('click', back);
+    progress.addEventListener('click', back);
     bar.style.height = '1%';
+    bar1.style.height = '1%';
+    bar2.style.height = '1%';
+    bar3.style.height = '1%';
 
     //bar.style.height jak ma szczytywać z aktualnego położenia
     //bar.style.height = height + '%'; ???
@@ -54,9 +71,9 @@ progress.addEventListener('click', back);
 
     function line() {
         var height = parseInt(bar.style.height) //zmienia na liczbe
-        console.log(height)
+        //console.log(height)
         if (height >= 100 || height < 1) {
-            clearInterval(id);
+            clearInterval;
         } else {
             bar.style.height = (height + 3) + '%'
         }
@@ -72,7 +89,7 @@ progress.addEventListener('click', back);
             } else {
                 bar.style.height = (height + 3) + '%'
             }
-            delay += 100
+            delay -= 10
             setTimeout(run, delay)
         }
 
