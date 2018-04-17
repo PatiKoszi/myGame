@@ -13,11 +13,22 @@
     width: 120px;
     background-color: deeppink;
 }
-
-.buttonsBegin{
+/*
+.myBar{
+    width: 120px;
+    background-color: deeppink;
+}
+*/
+.buttonsStart{
     width:600px;
     display:flex;
     justify-content: space-around;
+}
+
+.buttonsDown{
+    width:600px;
+    display: flex;
+    justify-content:space-around;
 }
 
 .button{
