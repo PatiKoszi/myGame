@@ -1,0 +1,20 @@
+.container{
+
+    width:820px;
+    height:600px;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid red;
+}
+
+.smallgrid{
+    width:160px;
+    height:200px;
+    background:deepskyblue;
+}
+
+.smallgrid1{
+    justify-content: space-around;
+    align-items: flex-end;
+}
