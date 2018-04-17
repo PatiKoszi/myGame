@@ -17,8 +17,104 @@
         <div class="smallgrid"> </div>
         <div class="smallgrid"> </div>
 
-
     </div>
+
+    <script>
+        var bar = document.getElementById("smallgrid");
+        var progress = document.getElementById("container")
+        var countOFclick = 0;
+        progress.addEventListener('click', back);
+        bar.style.height = '1%';
+
+        //bar.style.height jak ma szczytywać z aktualnego położenia
+        //bar.style.height = height + '%'; ???
+
+        //setInterval(move,1000);
+        //klikniecie na kolumne zmniejsza % tla
+
+        //var speedy = setInterval(function() {
+        //}, 100)
+        // 500 dac jako zmienna i co 5 sekund zmiwkszac go o 50
+
+        /*function move() {
+           var id = setInterval(line,500);
+            function line() {
+                var height = parseInt(bar.style.height) //zmienia na liczbe
+                console.log(height)
+                if (height >= 100 || height < 1) {
+                    clearInterval(id);
+                } else {
+                    bar.style.height = (height + 3) + '%'
+                }
+            }
+        } */
+
+        function line() {
+            var height = parseInt(bar.style.height) //zmienia na liczbe
+            console.log(height)
+            if (height >= 100 || height < 1) {
+                clearInterval(id);
+            } else {
+                bar.style.height = (height + 3) + '%'
+            }
+        }
+
+        var move  = (function () {
+            var delay = 500;
+            function run() {
+                var height = parseInt(bar.style.height) //zmienia na liczbe
+                console.log(height)
+                if (height >= 100 || height < 1) {
+                    return
+                } else {
+                    bar.style.height = (height + 3) + '%'
+                }
+                delay += 100
+                setTimeout(run, delay)
+            }
+
+            return run
+        })()
+
+
+
+        // licznik sekund
+        var seconds =0;
+        var time = setInterval(function(){
+            seconds++;
+            document.querySelector('#time').innerHTML= seconds;
+        },1000);
+
+
+        //move()
+        /*
+            Kontrolowany interval :
+
+                var go = (function () {/
+                    var delay = 500;
+                    function run() {
+                        console.log('foo');
+                        delay += 100
+                        setTimeout(run, delay)
+                    }
+
+                    return run
+                })()
+        */
+
+        function back() {
+            var height = parseInt(bar.style.height)
+            bar.style.height = (height - 10) + '%';
+            countOFclick ++;
+            // document.querySelector('#counter').innerHTML= (countOFclick/z).toString();
+            document.querySelector('#counter').innerHTML= countOFclick;
+
+
+
+            console.log(countOFclick);
+        }
+
+    </script>
 
 </head>
 <body>
