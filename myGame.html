@@ -19,7 +19,7 @@
 <div class="space"></div>
 
 <div class ="buttonsStart"> <!-- powinny być 4 funkcje pod jeden przycisk-->
-<button class="button" onclick="move()">Start :)</button>
+<button class="button" onclick="move(); move1(); move2(); move3()">Start :)</button>
 <button class="button" onclick="move1()">Start1 :)</button>
 <button class="button" onclick="move2()">Start2 :)</button>
 <button class="button" onclick="move3()">Start3 :)</button>
@@ -32,12 +32,19 @@
 <button class="buttonDown" onclick="back()">Down</button>
 <button class="buttonDown" onclick="back()">Down</button>
 </div>
+<div class="space"></div>
 
 <div id="counter">0</div>
 <div id="time">0</div>
+<div class="space"></div>
 
 
 <script>
+
+//    function pageReload() {
+  //  location.reload();
+    //}
+
     var container = document.getElementById("container");//???
     //var bar = container.getElementsByClassName("myBar");
     //console.log(bar);
@@ -50,9 +57,9 @@
     var countOFclick = 0;
     container.addEventListener('click', back);
     bar.style.height = '1%'; // kiedy zmieniłem na klase to nie działa tu
-    bar1.style.height = '3%';
-    bar2.style.height = '6%';
-    bar3.style.height = '9%';
+    bar1.style.height = '1%';
+    bar2.style.height = '1%';
+    bar3.style.height = '1%';
 // functions how to change it to class
     var move  = (function () {
         var delay = 500;
@@ -62,7 +69,7 @@
             if (height >= 100 || height < 1) {
                 return
             } else {
-                bar.style.height = (height + 3) + '%';
+                bar.style.height = Math.min(100,height + 3) + '%';
             }
             delay -= 10;
             setTimeout(run, delay);
@@ -79,7 +86,7 @@
             if (height >= 100 || height < 1) {
                 return
             } else {
-                bar.style.height = (height + 3) + '%';
+                bar1.style.height = (height + 3) + '%';
             }
             delay -= 10;
             setTimeout(run, delay);
@@ -96,7 +103,7 @@
             if (height >= 100 || height < 1) {
                 return
             } else {
-                bar.style.height = (height + 3) + '%';
+                bar2.style.height = (height + 3) + '%';
             }
             delay -= 10;
             setTimeout(run, delay);
@@ -113,7 +120,7 @@
             if (height >= 100 || height < 1) {
                 return
             } else {
-                bar.style.height = (height + 3) + '%';
+                bar3.style.height = (height + 3) + '%';
             }
             delay -= 10;
             setTimeout(run, delay);
