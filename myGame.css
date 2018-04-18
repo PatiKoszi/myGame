@@ -39,3 +39,14 @@
 .space {
     height: 15px;
 }
+
+.reloadePage{
+    width:600px;
+    display:flex;
+    justify-content: space-around;
+}
+
+.reloadeButton{
+    width:120px;
+    height:25px;
+}

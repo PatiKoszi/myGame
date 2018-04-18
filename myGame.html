@@ -9,6 +9,9 @@
 
 <body>
 <h1>JavaScript Progress Bar</h1>
+<br>
+<div class="reloadePage"> <button class="reloadeButton" onclick="pageReload()">Reload Page</button> </div>
+<div class="space"></div>
 
 <div id="container">
     <div id="myBar"></div>
@@ -20,17 +23,17 @@
 
 <div class ="buttonsStart"> <!-- powinny być 4 funkcje pod jeden przycisk-->
 <button class="button" onclick="move(); move1(); move2(); move3()">Start :)</button>
-<button class="button" onclick="move1()">Start1 :)</button>
+<!-- <button class="button" onclick="move1()">Start1 :)</button>
 <button class="button" onclick="move2()">Start2 :)</button>
-<button class="button" onclick="move3()">Start3 :)</button>
+<button class="button" onclick="move3()">Start3 :)</button> -->
 </div>
 <div class="space"></div>
 
 <div class ="buttonsDown">
 <button class="buttonDown" onclick="back()">Down</button>
-<button class="buttonDown" onclick="back()">Down</button>
-<button class="buttonDown" onclick="back()">Down</button>
-<button class="buttonDown" onclick="back()">Down</button>
+<button class="buttonDown" onclick="back1()">Down</button>
+<button class="buttonDown" onclick="back2()">Down</button>
+<button class="buttonDown" onclick="back3()">Down</button>
 </div>
 <div class="space"></div>
 
@@ -38,12 +41,11 @@
 <div id="time">0</div>
 <div class="space"></div>
 
-
 <script>
 
-//    function pageReload() {
-  //  location.reload();
-    //}
+function pageReload() {
+location.reload();
+    }
 
     var container = document.getElementById("container");//???
     //var bar = container.getElementsByClassName("myBar");
@@ -61,22 +63,25 @@
     bar2.style.height = '1%';
     bar3.style.height = '1%';
 // functions how to change it to class
-    var move  = (function () {
-        var delay = 500;
+    var makeMove = function (element, delta, delay) {
+
         function run() {
-            var height = parseInt(bar.style.height) //zmienia na liczbe
+            var height = parseInt(element.style.height) //zmienia na liczbe
             //console.log(height)
             if (height >= 100 || height < 1) {
+                //location.reload();
                 return
             } else {
-                bar.style.height = Math.min(100,height + 3) + '%';
+                element.style.height = Math.min(100,height + delta) + '%';
             }
-            delay -= 10;
+            delay -= 21;
             setTimeout(run, delay);
         }
 
         return run
-    })();
+    };
+
+    var move = makeMove(bar, 3, 500);
 
     var move1  = (function () {
         var delay = 500;
@@ -86,9 +91,9 @@
             if (height >= 100 || height < 1) {
                 return
             } else {
-                bar1.style.height = (height + 3) + '%';
+                bar1.style.height = Math.min(100, height +4) + '%';// przyjmie mniejszy element
             }
-            delay -= 10;
+            delay -= 7;
             setTimeout(run, delay);
         }
 
@@ -103,9 +108,9 @@
             if (height >= 100 || height < 1) {
                 return
             } else {
-                bar2.style.height = (height + 3) + '%';
+                bar2.style.height = Math.min(100, height + 7) + '%';
             }
-            delay -= 10;
+            delay -= 15;
             setTimeout(run, delay);
         }
 
@@ -120,9 +125,9 @@
             if (height >= 100 || height < 1) {
                 return
             } else {
-                bar3.style.height = (height + 3) + '%';
+                bar3.style.height = Math.min(100, height + 1) + '%';
             }
-            delay -= 10;
+            delay -= 52;
             setTimeout(run, delay);
         }
 
@@ -145,6 +150,33 @@
             countOFclick ++;
            // document.querySelector('#counter').innerHTML= (countOFclick/z).toString();
            document.querySelector('#counter').innerHTML= countOFclick;
+            // console.log(countOFclick);
+        }
+
+        function back1() {
+            var height = parseInt(bar1.style.height)
+            bar1.style.height = (height - 10) + '%';
+            countOFclick ++;
+            // document.querySelector('#counter').innerHTML= (countOFclick/z).toString();
+            document.querySelector('#counter').innerHTML= countOFclick;
+            // console.log(countOFclick);
+        }
+
+        function back2() {
+            var height = parseInt(bar2.style.height)
+            bar2.style.height = (height - 10) + '%';
+            countOFclick ++;
+            // document.querySelector('#counter').innerHTML= (countOFclick/z).toString();
+            document.querySelector('#counter').innerHTML= countOFclick;
+            // console.log(countOFclick);
+        }
+
+        function back3() {
+            var height = parseInt(bar3.style.height)
+            bar3.style.height = (height - 10) + '%';
+            countOFclick ++;
+            // document.querySelector('#counter').innerHTML= (countOFclick/z).toString();
+            document.querySelector('#counter').innerHTML= countOFclick;
             // console.log(countOFclick);
         }
 
