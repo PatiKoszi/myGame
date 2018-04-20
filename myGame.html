@@ -64,6 +64,9 @@ bars.forEach(function (bar) {
     var bar3 = document.getElementById("myBar3");
 
 
+
+
+
     var countOFclick = 0;
     container.addEventListener('click', back);
     bar.style.height = '1%'; // kiedy zmieniłem na klase to nie działa tu
@@ -71,14 +74,16 @@ bars.forEach(function (bar) {
     bar2.style.height = '1%';
     bar3.style.height = '1%';
 // functions how to change it to class
-    var makeMove = function (element, delta, delay) {
 
+
+   var makeMove = function (element, delta, delay) {
         function run() {
             var height = parseInt(element.style.height) //zmienia na liczbe
             //console.log(height)
             if (height >= 100 || height < 1) {
+                //clearInterval(time);
                 //location.reload();
-                return
+                return height;
             } else {
                 element.style.height = Math.min(100,height + delta) + '%';
             }
@@ -95,18 +100,33 @@ bars.forEach(function (bar) {
     var move3 = makeMove(bar3, 4, 700);
 
 
+    if (move>=100 && move1>=100 &&  move2>=100 && move3>=100) {
+    }
+
 // licznik sekund
     var seconds =0;
     var time = setInterval(function(){
+       if (
+           Array.from(bars).every(function (element) {
+                return parseInt(element.style.height) === 100
+           })
+       ) {
+           clearInterval(time);
+       }
         seconds++;
         document.querySelector('#time').innerHTML= seconds;
     },1000);
 
+//Down
     var makeDown = function (element,delta) {
         function back() {
             var height = parseInt(element.style.height)
+            if (height >=100) {
+                return
+            }
             element.style.height = (height - delta) + '%';
             countOFclick ++;
+
             // document.querySelector('#counter').innerHTML= (countOFclick/z).toString();
             document.querySelector('#counter').innerHTML= countOFclick;
             // console.log(countOFclick);
